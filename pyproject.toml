@@ -1,0 +1,10 @@
+[project]
+name = "turkish-finance-data"
+version = "0.1.0"
+description = "Source-aware clients and schemas for Turkish financial research data"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
