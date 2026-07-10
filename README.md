@@ -53,6 +53,10 @@ Generate the reproducible 30-line report from the first 2026 observation to
 10 July. The macro snapshot is dated 10 July 2026 and the forecast is a
 scenario range, not a promise or personal investment recommendation.
 
+The companion [detailed Turkish report](reports/usdtry-2026-07-10-detayli.md)
+explains the inflation, real-rate, external-balance, reserve, micro-flow, and
+current political/geopolitical transmission channels behind the range.
+
 ```bash
 PYTHONPATH=src python3 -m turkish_finance_data.usdtry_report \
   --as-of 10-07-2026 \
