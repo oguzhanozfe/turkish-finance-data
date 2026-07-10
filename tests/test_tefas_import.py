@@ -19,6 +19,18 @@ class TefasImportTest(unittest.TestCase):
                 "application/json",
             )
 
+    def test_accepts_turkish_export_columns_and_optional_fund_facts(self):
+        body = (
+            "FON KODU;TARİH;FİYAT;FON ADI;KATEGORİ;TOPLAM DEĞER;YATIRIMCI;RİSK\n"
+            "PPF;10.07.2026;1,2345;ÖRNEK PARA PİYASASI FONU;Para Piyasası;1234567,89;4567;2\n"
+        ).encode("utf-8")
+        rows = parse_tefas_export(body, "text/csv")
+        self.assertEqual(rows[0]["series_code"], "TEFAS:PPF")
+        self.assertEqual(rows[0]["observation_date"], "2026-07-10")
+        self.assertEqual(rows[0]["category"], "Para Piyasası")
+        self.assertEqual(rows[0]["investor_count"], 4567)
+        self.assertAlmostEqual(rows[0]["total_value"], 1234567.89)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -82,3 +82,24 @@ KAP disclosures are public, but public availability does not by itself grant a
 bulk redistribution license. Phase 2 should fetch only document metadata and
 user-requested disclosures after reviewing MKK/KAP data-product terms. Original
 documents should be linked and hashed rather than republished by default.
+
+MKK's current product catalogue explicitly describes the KAP data publication
+service as a channel used by data vendors, and its 2024 activity report refers
+to data-sale packages. Treat bulk KAP transport as a contracted data product.
+
+## SPK monthly statistics — approved for local collection
+
+- Publisher: Sermaye Piyasası Kurulu (SPK).
+- Access: direct, publicly linked `.xls` workbooks with no hidden endpoint or
+  authentication bypass.
+- Content: delayed monthly aggregate statistics for mutual and pension funds,
+  plus wider capital-markets tables.
+- Collector policy: fetch each published workbook once, validate the legacy XLS
+  signature, store source URL/retrieval time/SHA-256, and keep raw files local.
+- Redistribution: publish code and attributed derived analysis; do not commit or
+  mirror raw SPK workbooks until reuse terms are confirmed in writing.
+- Limitation: inspected 2026 workbooks refer fund-level daily data to TEFAS and
+  move aggregate fund history from September 2025 onward to Takasbank KYP.
+
+See [docs/FUND_DATA_INVENTORY_TR.md](docs/FUND_DATA_INVENTORY_TR.md) for the
+field-level source matrix and collection schedule.

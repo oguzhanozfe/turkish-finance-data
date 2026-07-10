@@ -1,5 +1,38 @@
 {
   "reviewed_at": "2026-07-10",
-  "sources": [],
-  "note": "Add an EVDS series only after recording its code, native frequency, unit, upstream owner, attribution, and metadata review date."
+  "sources": [
+    {
+      "id": "tcmb-evds",
+      "status": "approved-automatic",
+      "scope": "reviewed TCMB-owned benchmark series",
+      "cadence": "native series frequency",
+      "redistribution": "allowed with TCMB/EVDS attribution; review third-party series metadata",
+      "url": "https://evds3.tcmb.gov.tr/"
+    },
+    {
+      "id": "spk-monthly-statistics",
+      "status": "approved-local-collection",
+      "scope": "publicly linked monthly XLS workbooks and derived aggregate fund statistics",
+      "cadence": "once per SPK release",
+      "redistribution": "code and attributed derived analysis only; raw workbook remains local",
+      "url": "https://spk.gov.tr/istatistikler/aylik-istatistik-bultenleri/2026-yili-istatistik-bultenleri"
+    },
+    {
+      "id": "tefas-user-export",
+      "status": "manual-import-only",
+      "scope": "user-supplied fund price and fact exports",
+      "cadence": "user controlled",
+      "redistribution": "do not publish imported raw/history data",
+      "url": "https://www.tefas.gov.tr/"
+    },
+    {
+      "id": "kap-disclosures",
+      "status": "manual-links-only",
+      "scope": "user-selected disclosure metadata and hashes",
+      "cadence": "user controlled",
+      "redistribution": "link to original; bulk transport requires MKK/KAP agreement",
+      "url": "https://www.kap.org.tr/"
+    }
+  ],
+  "note": "A source status authorizes only the stated scope. It does not override upstream rights or licensing."
 }

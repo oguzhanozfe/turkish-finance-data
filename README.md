@@ -28,6 +28,12 @@ PYTHONPATH=src python3 -m unittest discover -s tests -v
 
 No third-party Python package is required.
 
+SPK's legacy Excel workbooks need the optional open-source XLS reader:
+
+```bash
+python3 -m pip install '.[xls]'
+```
+
 ## EVDS usage
 
 Create a free EVDS account, obtain an API key, and keep it outside the repository:
@@ -80,6 +86,28 @@ source identifier, native frequency, and SHA-256 provenance hash.
 See [DATA_SOURCES.md](DATA_SOURCES.md) for the legal/data contract and
 [docs/TEFAS_PERMISSION_REQUEST_TR.md](docs/TEFAS_PERMISSION_REQUEST_TR.md) for
 the permission request to Takasbank.
+
+## Fund-data phase
+
+The current fund pipeline accepts user-exported TEFAS CSV/JSON files with both
+English normalized columns and common Turkish headings such as `FON KODU`,
+`TARİH`, `FİYAT`, `TOPLAM DEĞER`, and `YATIRIMCI`.
+
+Official SPK monthly workbooks can be collected locally with provenance:
+
+```bash
+PYTHONPATH=src python3 -m turkish_finance_data.spk_monthly \
+  --url 'https://spk.gov.tr/data/.../Aylik_istatistik_bulteni_2026_05.xls' \
+  --output-dir data/spk/2026-05
+```
+
+Raw workbooks and imported fund histories stay under ignored `data/`; only code,
+source metadata, and attributed derived analysis belong in Git. See the
+[Turkish fund-data inventory](docs/FUND_DATA_INVENTORY_TR.md) for what is ready,
+manual-only, or permission-gated.
+
+Step-by-step commands for daily prices/facts and monthly allocations are in the
+[Turkish fund export guide](docs/FUND_EXPORT_GUIDE_TR.md).
 
 ## Not investment advice
 
