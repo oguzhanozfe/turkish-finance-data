@@ -24,7 +24,7 @@ class EvdsResponse:
 class EvdsClient:
     """Minimal EVDS client that keeps the personal API key out of URLs/logs."""
 
-    base_url = "https://evds2.tcmb.gov.tr/service/evds"
+    base_url = "https://evds3.tcmb.gov.tr/igmevdsms-dis"
 
     def __init__(self, api_key: str, opener=urlopen):
         if not api_key or not api_key.strip():
@@ -51,12 +51,20 @@ class EvdsClient:
         try:
             with self._opener(request, timeout=30) as response:
                 raw = response.read()
+                content_type = response.headers.get("Content-Type", "") if hasattr(response, "headers") else ""
+                final_url = response.geturl() if hasattr(response, "geturl") else url
         except Exception as exc:
             raise EvdsError(str(exc)) from exc
+        if "json" not in content_type.lower() and raw.lstrip().startswith(b"<"):
+            raise EvdsError(
+                f"EVDS returned HTML instead of JSON from {final_url}; the service endpoint may have changed"
+            )
         try:
             payload = json.loads(raw)
         except json.JSONDecodeError as exc:
             raise EvdsError("EVDS returned non-JSON content") from exc
+        if not isinstance(payload, dict) or not isinstance(payload.get("items"), list):
+            raise EvdsError("EVDS returned an unexpected JSON shape")
         return EvdsResponse(
             series=clean,
             retrieved_at=datetime.now(timezone.utc).isoformat(),

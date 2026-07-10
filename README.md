@@ -43,6 +43,10 @@ python3 -m turkish_finance_data.evds \
 The key is sent in the HTTP `key` header as required by the current EVDS guide;
 it is never placed in the URL or logs.
 
+EVDS3 time-series requests use the `/igmevdsms-dis` service path. The legacy
+EVDS2 service URL now redirects to the EVDS3 web application and must not be
+used as an API base URL.
+
 ## Collection cadence
 
 | Dataset | Native frequency | Collector policy |
