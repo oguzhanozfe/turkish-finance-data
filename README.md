@@ -1,5 +1,7 @@
 # Turkish Finance Data
 
+[![CI](https://github.com/oguzhanozfe/turkish-finance-data/actions/workflows/ci.yml/badge.svg)](https://github.com/oguzhanozfe/turkish-finance-data/actions/workflows/ci.yml)
+
 A small, local-first Python toolkit for reproducible Turkish market research.
 Phase 1 covers legally documented TCMB EVDS web-service access and validated
 manual TEFAS fund-price imports.
