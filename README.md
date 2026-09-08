@@ -9,6 +9,26 @@ manual TEFAS fund-price imports.
 The repository contains code, schemas, tests, and source metadata. It does not
 redistribute market datasets, credentials, or investment recommendations.
 
+![Reproducible Turkish market research snapshot](docs/research-snapshot.svg)
+
+## Product slice: research snapshot
+
+The toolkit now turns normalized time series into a self-contained research
+view with indexed performance, annualized volatility and maximum drawdown. The
+committed example is deliberately synthetic, which makes the feature runnable
+offline without pretending that demo values are live market data.
+
+```bash
+PYTHONPATH=src python3 -m turkish_finance_data.research_snapshot \
+  --input examples/synthetic-market-series.json \
+  --html docs/research-snapshot.html \
+  --svg docs/research-snapshot.svg
+```
+
+Open `docs/research-snapshot.html` in any browser. It contains no JavaScript,
+external fonts or remote assets. The same command accepts attributed derived
+series when their provenance boundary is declared in the input document.
+
 ## Why the source boundary matters
 
 - **TCMB EVDS:** enabled. EVDS permits web-service access and third-party use or

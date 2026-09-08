@@ -1,9 +1,15 @@
 [project]
 name = "turkish-finance-data"
-version = "0.2.0"
-description = "Source-aware clients and schemas for Turkish financial research data"
+version = "0.3.0"
+description = "Source-aware Turkish market data pipelines and reproducible research outputs"
 requires-python = ">=3.9"
 license = { text = "MIT" }
+
+[project.scripts]
+tfd-evds = "turkish_finance_data.evds:main"
+tfd-tefas-import = "turkish_finance_data.tefas_import:main"
+tfd-spk-monthly = "turkish_finance_data.spk_monthly:main"
+tfd-snapshot = "turkish_finance_data.research_snapshot:main"
 
 [project.optional-dependencies]
 xls = ["xlrd>=2.0.1,<3"]
